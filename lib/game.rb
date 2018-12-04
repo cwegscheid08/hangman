@@ -1,10 +1,10 @@
 class Game
 	attr_accessor :board, :player, :computer, :round
 
-	require "./board.rb"
-	require "./player.rb"
-	require "./computer.rb"
-	require "./round.rb"
+	require "./lib/board.rb"
+	require "./lib/player.rb"
+	require "./lib/computer.rb"
+	require "./lib/round.rb"
 
 	def initialize
 		@board = Board.new
@@ -29,5 +29,5 @@ end
 
 new_game = Game.new
 new_game.computer.any_letters?(new_game.player.guess)
-new_game.computer.display
-new_game.player.display
+# new_game.computer.display
+# new_game.player.display

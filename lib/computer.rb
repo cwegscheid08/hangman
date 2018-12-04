@@ -5,12 +5,18 @@ class Computer
 
 
 	def initialize
-		@dictionary = CSV.open "../dictionary.csv"
+		@dictionary = CSV.open "dictionary.csv"
 		@code = random_word
 	end
 
 	def any_letters?(guess)
-		puts "ANY_LETTERS?: #{@code.any?(guess)}"
+		puts "CODE: #{@code} GUESS: #{guess}"
+		# @code.include?(guess) ? reveal_letter(guess) : wrong_guess(guess)
+		if @code.include?(guess)
+			reveal_letter(guess)
+		else
+			wrong_guess(guess)
+		end
 	end
 
 	def random_word
@@ -22,7 +28,8 @@ class Computer
 			end
 		end
 		random_word = random_word[rand(random_word.length)]
-		[random_word]
+		puts "RAND: #{random_word.class}"
+		random_word
 	end
 
 	def display

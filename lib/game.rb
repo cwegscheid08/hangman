@@ -11,14 +11,34 @@ class Game
 		@player = Player.new(gets.chomp.downcase.capitalize)
 		@computer = Computer.new
 		@board = Board.new(@player, @computer)
-		@round = Round.new(@player, @computer, @board)
+		@round = Round.new(@player, @computer, @board, self)
 		start_game
 	end
 
 	def start_game
-		while round.round_number <= 5
+		# while round.round_number <= 20
+		until is_over?
 			round.single_round
 		end
+	end
+
+	def is_over?
+		if @board.wrong_count >= 6
+			lose()
+			return true
+		elsif (!@board.secret.include?("_")) 
+			win()
+			return true
+		end
+		false
+	end
+
+	def win
+		puts "WIN"
+	end
+
+	def lose
+		puts "LOSE"
 	end
 
 	def say_hi

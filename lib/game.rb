@@ -5,6 +5,7 @@ class Game
 	require "./lib/player.rb"
 	require "./lib/computer.rb"
 	require "./lib/round.rb"
+	require "yaml"
 
 	def initialize
 		puts "What's your name?"
@@ -16,7 +17,6 @@ class Game
 	end
 
 	def start_game
-		# while round.round_number <= 20
 		until is_over?
 			round.single_round
 		end
@@ -34,16 +34,25 @@ class Game
 	end
 
 	def win
-		puts "WIN"
+		puts "\n     #{player.name.upcase} WINS!!!\n\n"
 	end
 
 	def lose
-		puts "LOSE"
+		puts "\nThe word was #{@computer.code.upcase}\n\n     YOU LOSE!\n\n"
 	end
 
-	def say_hi
-		puts "Hello!"
+	def save_game
+		Dir.mkdir("file_save") unless Dir.exsist? "file_name"
+
+		filename = "file_save/#{player.name}_#{Time.new}.html"
+
+		data = YAML::dump(self)
+
+		File.open(filename, "w") do |file|
+			file.puts data
+		end
 	end
+
 end
 
 new_game = Game.new

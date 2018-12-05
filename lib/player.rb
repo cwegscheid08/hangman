@@ -9,7 +9,6 @@ class Player
 	def guess
 		puts "Give me a letter."
 		@guess = [gets.chomp.downcase]
-		# puts "GUESSED IN PLAYER: #{board.past_letters}"
 		[@guess].any?(/[a-z]/) ? (puts "Only letters please."; guess()) : ""
 		@guess[0]
 	end

@@ -11,13 +11,13 @@ class Round
 
 	def single_round
 		guess = player.guess
-		# puts "PAST: #{board.past_letters.include?(guess)}"
-		if (!board.past_letters.include?(guess))
+		if (!board.past_letters.include?(guess) && guess.length <= 1)
 			board.guessed_letters(guess)
 			@computer.any_letters?(guess) ? board.right_letter(guess) : board.wrong_letter(guess)
 			board.display
 			@round_number += 1
-			game.is_over?
+		elsif guess.length > 1
+			puts "\nYOUR GUESS CAN ONLY BE ONE LETTER"
 		end
 	end
 

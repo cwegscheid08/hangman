@@ -15,6 +15,8 @@ class Computer
 		@code.include?(guess) ? true : false
 	end
 
+	private
+
 	def random_word
 		random_word = []
 		@dictionary.each do |word|			

@@ -1,34 +1,28 @@
 class Computer
-	attr_accessor :dictionary, :code
+	attr_accessor :player, :board, :code, :dictionary
 
 	require "csv"
 
 
 	def initialize
+		@player
+		@board
 		@dictionary = CSV.open "dictionary.csv"
 		@code = random_word
 	end
 
 	def any_letters?(guess)
-		puts "CODE: #{@code} GUESS: #{guess}"
-		# @code.include?(guess) ? reveal_letter(guess) : wrong_guess(guess)
-		if @code.include?(guess)
-			reveal_letter(guess)
-		else
-			wrong_guess(guess)
-		end
+		@code.include?(guess) ? true : false
 	end
 
 	def random_word
 		random_word = []
-
 		@dictionary.each do |word|			
 			if(word[0].length >= 5 && word[0].length <= 12)
 				random_word.push(word[0].downcase)
 			end
 		end
 		random_word = random_word[rand(random_word.length)]
-		puts "RAND: #{random_word.class}"
 		random_word
 	end
 

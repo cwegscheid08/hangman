@@ -42,9 +42,9 @@ class Game
 	end
 
 	def save_game
-		Dir.mkdir("file_save") unless Dir.exsist? "file_name"
+		# Dir.mkdir("file_save") unless Dir.exist? "file_name"
 
-		filename = "file_save/#{player.name}_#{Time.new}.html"
+		filename = "file_save/#{player.name.downcase}_#{Time.new.usec}.yaml"
 
 		data = YAML::dump(self)
 
@@ -53,6 +53,23 @@ class Game
 		end
 	end
 
+	def load_game
+		# puts #LIST OUT ALL OF THE CURRENT FILES IN FILE_SAVE, EACH FILE PRECEEDED BY A NUMBER FOR SELECTION
+		save_file = Dir.open("./file_save/")
+		
+		Dir.foreach(save_file) {|file| file.length > 5 ? print("#{file.split(".")[0]}\n") : "" }
+
+		puts "\nWhich file would you like to load?"
+		previous_save = gets.chomp
+
+		replay = YAML.load_file("./file_save/#{previous_save}.yaml")
+
+		replay
+
+		# File.open("./file_save/#{previous_save}.yaml", "w") do |file|
+			# YAML::load(file)
+		# end
+	end
 end
 
 new_game = Game.new

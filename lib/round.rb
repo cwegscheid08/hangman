@@ -16,6 +16,10 @@ class Round
 			@computer.any_letters?(guess) ? board.right_letter(guess) : board.wrong_letter(guess)
 			board.display
 			@round_number += 1
+		elsif guess == "save"
+			game.save_game
+		elsif guess == "load"
+			game.load_game
 		elsif guess.length > 1
 			puts "\nYOUR GUESS CAN ONLY BE ONE LETTER"
 		end

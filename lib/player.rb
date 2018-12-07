@@ -1,5 +1,5 @@
 class Player
-	attr_accessor :name, :guess, :round, :board
+	attr_accessor :name, :guess, :board
 
 	def initialize(name)
 		@name = name
@@ -12,9 +12,4 @@ class Player
 		[@guess].any?(/[a-z]/) ? (puts "Only letters please."; guess()) : ""
 		@guess[0]
 	end
-
-	def display
-		puts "NAME: #{name}  GUESS: #{@guess}"
-	end
-
 end

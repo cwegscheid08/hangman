@@ -1,0 +1,14 @@
+---
+:player_name: Chris
+:past_guesses: aeiou
+:board: |2-
+    __
+   |  |
+   O  |
+   |  |
+      |
+  ____|_
+:wrong: 2
+:board_secret: e_o_io_
+:computer: erosion
+:round: 5

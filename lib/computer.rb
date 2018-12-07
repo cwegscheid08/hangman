@@ -1,14 +1,13 @@
 class Computer
 	attr_accessor :player, :board, :code, :dictionary
-
 	require "csv"
 
 
-	def initialize(code = "")
+	def initialize
 		@player
 		@board
 		@dictionary = CSV.open "dictionary.csv"
-		code == "" ? @code = random_word : @code = code
+		@code = random_word
 	end
 
 	def any_letters?(guess)
@@ -27,9 +26,4 @@ class Computer
 		random_word = random_word[rand(random_word.length)]
 		random_word
 	end
-
-	def display
-		puts "CODE: #{@code} LENGTH: #{@code.length}"
-	end
-
 end

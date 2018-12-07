@@ -2,13 +2,13 @@ class Board
 	attr_accessor :body, :board, :round, :player, :computer, :secret, :guessed, :wrong_count
 
 
-	def initialize(player, computer, body = "", wrong_count = "")
+	def initialize(player, computer)
 		@player = player
 		@computer = computer
 		@secret = secret_word
 		@guessed = ""
-		wrong_count == "" ? @wrong_count = 0 : @wrong_count = wrong_count
-		body == "" ? hungman : @body = body
+		@wrong_count = 0
+		hungman
 		display
 	end
 
@@ -20,7 +20,6 @@ class Board
 	end
 
 	def add_limb
-		# puts "BODY: #{@body}"
 		case @wrong_count
 			when 1
 				@body = "  __\n |  |\n O  |\n    |\n    |\n____|_"
@@ -36,28 +35,23 @@ class Board
 				@body = "  __\n |  |\n O  |\n/|\\ |\n/ \\ |\n____|_"
 			else
 				puts "ERROR"
-		end
-		# puts "BODY: #{@body}"
+			end
 	end
 
 	def right_letter(guess)
-		# puts "RIGHT: #{guess}"
 		reveal_letters(guess)
 	end
 
 	def wrong_letter(guess)
-		# puts "WRONG: #{guess}"
 		@wrong_count += 1
 		add_limb
 	end
 
 	def display
 		puts "#{@body}\n\n GUESSED: #{past_letters.split("").join("-")}\n GUESS MY WORD: #{secret.split("").join(" ")}"
-		# puts "CODE: #{computer.code}"
 	end
 
 	def guessed_letters(guess = "")
-		# puts "GUESSED LETTERS: #{guessed.include?(guess)}"
 		@guessed.include?(guess) ? "" : @guessed += guess
 	end
 

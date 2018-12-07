@@ -1,0 +1,14 @@
+---
+:player_name: Chris
+:past_guesses: ai
+:board: |2-
+    __
+   |  |
+   O  |
+      |
+      |
+  ____|_
+:wrong: 1
+:board_secret: _i__i__
+:computer: hittite
+:round: 2

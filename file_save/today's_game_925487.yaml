@@ -1,0 +1,14 @@
+---
+:player_name: Chris
+:past_guesses: aeiou
+:board: |2-
+    __
+   |  |
+   O  |
+   |  |
+  /   |
+  ____|_
+:wrong: 3
+:board_secret: u__e_____
+:computer: unkemptly
+:round: 5

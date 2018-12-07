@@ -4,11 +4,11 @@ class Computer
 	require "csv"
 
 
-	def initialize
+	def initialize(code = "")
 		@player
 		@board
 		@dictionary = CSV.open "dictionary.csv"
-		@code = random_word
+		code == "" ? @code = random_word : @code = code
 	end
 
 	def any_letters?(guess)

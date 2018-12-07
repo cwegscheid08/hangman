@@ -2,13 +2,13 @@ class Board
 	attr_accessor :body, :board, :round, :player, :computer, :secret, :guessed, :wrong_count
 
 
-	def initialize(player, computer)
+	def initialize(player, computer, body = "", wrong_count = "")
 		@player = player
 		@computer = computer
 		@secret = secret_word
 		@guessed = ""
-		@wrong_count = 0
-		hungman
+		wrong_count == "" ? @wrong_count = 0 : @wrong_count = wrong_count
+		body == "" ? hungman : @body = body
 		display
 	end
 

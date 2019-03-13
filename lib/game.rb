@@ -9,15 +9,20 @@ class Game
 
 
 	def initialize
+		# puts "What's your name?"
+		# @player = Player.new(gets.chomp.downcase.capitalize)
+		# @computer = Computer.new
+		# @board = Board.new(@player, @computer)
+		# @round = Round.new(@player, @computer, @board, self)
+		# start_game
+	end
+
+	def start_game
 		puts "What's your name?"
 		@player = Player.new(gets.chomp.downcase.capitalize)
 		@computer = Computer.new
 		@board = Board.new(@player, @computer)
 		@round = Round.new(@player, @computer, @board, self)
-		start_game
-	end
-
-	def start_game
 		until is_over?
 			round.single_round
 		end
